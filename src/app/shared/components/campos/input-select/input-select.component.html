@@ -3,6 +3,6 @@
     <mat-select [placeholder]="titulo" [formControlName]="controlName">
       <mat-option *ngFor="let opcao of opcoes" [value]="opcao">{{opcao}}</mat-option>
     </mat-select>
-    <mat-error *ngIf="validacao.hasErrorValidar(formControl, 'required')">Campo obrigatório</mat-error>
+    <mat-error *ngIf="validacao.hasErrorValidar(formControl, 'required')">Required field</mat-error>
   </mat-form-field>
 </div>
