@@ -1,5 +1,3 @@
-
-
 ## Instalação
 
 1. clone o repositório `git clone git@github.com:RenanRB/curso-angular.git`
@@ -28,5 +26,3 @@ Commands
     1) npm install -g json-server
     2) json-server --watch db.json
    
-
-
