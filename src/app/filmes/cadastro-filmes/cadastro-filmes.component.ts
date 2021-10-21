@@ -6,11 +6,16 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
   templateUrl: './cadastro-filmes.component.html',
   styleUrls: ['./cadastro-filmes.component.scss']
 })
+
 export class CadastroFilmesComponent implements OnInit {
 
   registration: FormGroup;
 
   constructor(private fb: FormBuilder) { }
+
+  get f() {
+    return this.registration.controls;
+  }
 
   ngOnInit(): void {
 
@@ -26,6 +31,9 @@ export class CadastroFilmesComponent implements OnInit {
   }
 
   save(): void {
+    
+    this.registration.markAllAsTouched();
+
     if (this.registration.invalid) {
       return
     }
