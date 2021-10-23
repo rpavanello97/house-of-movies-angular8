@@ -3,20 +3,10 @@
   <mat-card class="center width50">
     <form [formGroup]="registration" (ngSubmit)="save()" (ngReset)="restartForm()">
       <mat-card-content>
-
-        <mat-form-field class="full-width">
-          <input matInput placeholder="Title *" name="title" formControlName="title">
-          <mat-error *ngIf="validation.checkAllErrors(f.title, 'required')">This field is required</mat-error>
-          <mat-error *ngIf="validation.checkAllErrors(f.title, 'minlength')">At least 2 characters</mat-error>
-          <mat-error *ngIf="validation.checkAllErrors(f.title, 'maxlength')">Must have 256 characters</mat-error>
-        </mat-form-field>
-
-        <mat-form-field class="full-width">
-          <input matInput placeholder="Photo Link* " name="urlPhoto" formControlName="urlPhoto">
-          <mat-error *ngIf="validation.checkAllErrors(f.urlPhoto, 'required')">This field is required</mat-error>
-          <mat-error *ngIf="validation.checkAllErrors(f.urlPhoto, 'minlength')">At least 10 characters</mat-error>
-        </mat-form-field>
-
+                
+        <dio-input-text title="Title *" [formGroup]="registration" controlName="title"></dio-input-text>
+        <dio-input-text title="Photo Link *" [formGroup]="registration" controlName="urlPhoto"></dio-input-text>
+       
         <mat-form-field class="full-width">
           <input matInput [matDatepicker]="picker" (click)="picker.open()" placeholder="Release Date *" name="dtRelease"
             formControlName="dtRelease" readonly>
@@ -24,10 +14,8 @@
           <mat-datepicker #picker></mat-datepicker>
           <mat-error *ngIf="validation.checkAllErrors(f.dtRelease, 'required')">This field is required</mat-error>
         </mat-form-field>
-
-        <mat-form-field class="full-width">
-          <textarea matInput placeholder="Description" name="description" formControlName="description"></textarea>
-        </mat-form-field>
+        
+        <dio-input-textarea title="Description" [formGroup]="registration" controlName="description"></dio-input-textarea>
 
         <mat-form-field class="full-width">
           <input matInput
@@ -44,11 +32,7 @@
           <mat-error *ngIf="validation.checkAllErrors(f.imbdRate, 'max')">Max rate is 10</mat-error>
         </mat-form-field>
 
-        <mat-form-field class="full-width">
-          <input matInput placeholder="IMDb Link *" name="urlImdb" formControlName="urlImdb">
-          <mat-error *ngIf="validation.checkAllErrors(f.urlImdb, 'required')">This field is required</mat-error>
-          <mat-error *ngIf="validation.checkAllErrors(f.urlImdb, 'minlength')">At least 10 characters</mat-error>
-        </mat-form-field>
+        <dio-input-text title="IMDb Link *" [formGroup]="registration" controlName="urlImdb"></dio-input-text>
 
         <mat-form-field class="full-width">
           <mat-select placeholder="Genre *" formControlName="genre">
