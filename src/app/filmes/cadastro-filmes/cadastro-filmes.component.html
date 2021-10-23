@@ -6,15 +6,15 @@
 
         <mat-form-field class="full-width">
           <input matInput placeholder="Title *" name="title" formControlName="title">
-          <mat-error *ngIf="(registration.touched || registration.dirty) && f.title.errors?.required">This field is required</mat-error>
-          <mat-error *ngIf="(registration.touched || registration.dirty) && f.title.errors?.minlength">At least two characters</mat-error>
-          <mat-error *ngIf="(registration.touched || registration.dirty) && f.title.errors?.maxlength">Must have 256 characters</mat-error>
+          <mat-error *ngIf="validation.checkAllErrors(f.title, 'required')">This field is required</mat-error>
+          <mat-error *ngIf="validation.checkAllErrors(f.title, 'minlength')">At least 2 characters</mat-error>
+          <mat-error *ngIf="validation.checkAllErrors(f.title, 'maxlength')">Must have 256 characters</mat-error>
         </mat-form-field>
 
         <mat-form-field class="full-width">
           <input matInput placeholder="Photo Link* " name="urlPhoto" formControlName="urlPhoto">
-          <mat-error *ngIf="(registration.touched || registration.dirty) && f.urlPhoto.errors?.required">This field is required</mat-error>
-          <mat-error *ngIf="(registration.touched || registration.dirty) && f.urlPhoto.errors?.minlength">At least 10 characters</mat-error>
+          <mat-error *ngIf="validation.checkAllErrors(f.urlPhoto, 'required')">This field is required</mat-error>
+          <mat-error *ngIf="validation.checkAllErrors(f.urlPhoto, 'minlength')">At least 10 characters</mat-error>
         </mat-form-field>
 
         <mat-form-field class="full-width">
@@ -22,7 +22,7 @@
             formControlName="dtRelease" readonly>
             <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>          
           <mat-datepicker #picker></mat-datepicker>
-          <mat-error *ngIf="(registration.touched || registration.dirty) && f.dtRelease.errors?.required">This field is required</mat-error>
+          <mat-error *ngIf="validation.checkAllErrors(f.dtRelease, 'required')">This field is required</mat-error>
         </mat-form-field>
 
         <mat-form-field class="full-width">
@@ -39,15 +39,15 @@
                   name="imbdRate" 
                   formControlName="imbdRate"
           >
-          <mat-error *ngIf="(registration.touched || registration.dirty) && f.imbdRate.errors?.required">This field is required</mat-error>
-          <mat-error *ngIf="(registration.touched || registration.dirty) && f.imbdRate.errors?.min">Min rate is 0</mat-error>
-          <mat-error *ngIf="(registration.touched || registration.dirty) && f.imbdRate.errors?.max">Max rate is 10</mat-error>
+          <mat-error *ngIf="validation.checkAllErrors(f.imbdRate, 'required')">This field is required</mat-error>
+          <mat-error *ngIf="validation.checkAllErrors(f.imbdRate, 'min')">Min rate is 0</mat-error>
+          <mat-error *ngIf="validation.checkAllErrors(f.imbdRate, 'max')">Max rate is 10</mat-error>
         </mat-form-field>
 
         <mat-form-field class="full-width">
           <input matInput placeholder="IMDb Link *" name="urlImdb" formControlName="urlImdb">
-          <mat-error *ngIf="(registration.touched || registration.dirty) && f.urlImdb.errors?.required">This field is required</mat-error>
-          <mat-error *ngIf="(registration.touched || registration.dirty) && f.urlImdb.errors?.minlength">At least 10 characters</mat-error>
+          <mat-error *ngIf="validation.checkAllErrors(f.urlImdb, 'required')">This field is required</mat-error>
+          <mat-error *ngIf="validation.checkAllErrors(f.urlImdb, 'minlength')">At least 10 characters</mat-error>
         </mat-form-field>
 
         <mat-form-field class="full-width">
@@ -58,7 +58,7 @@
             <mat-option value="Romance">Romance</mat-option>
             <mat-option value="Horro">Horror</mat-option>            
           </mat-select>
-          <mat-error *ngIf="(registration.touched || registration.dirty) && f.genre.errors?.required">This field is required</mat-error>         
+          <mat-error *ngIf="validation.checkAllErrors(f.genre, 'required')">This field is required</mat-error>         
         </mat-form-field>
 
       </mat-card-content>
