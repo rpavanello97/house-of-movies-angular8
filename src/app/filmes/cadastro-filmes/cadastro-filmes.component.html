@@ -5,46 +5,20 @@
       <mat-card-content>
                 
         <dio-input-text title="Title *" [formGroup]="registration" controlName="title"></dio-input-text>
-        <dio-input-text title="Photo Link *" [formGroup]="registration" controlName="urlPhoto"></dio-input-text>
-       
-        <mat-form-field class="full-width">
-          <input matInput [matDatepicker]="picker" (click)="picker.open()" placeholder="Release Date *" name="dtRelease"
-            formControlName="dtRelease" readonly>
-            <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>          
-          <mat-datepicker #picker></mat-datepicker>
-          <mat-error *ngIf="validation.checkAllErrors(f.dtRelease, 'required')">This field is required</mat-error>
-        </mat-form-field>
+        <dio-input-text title="Photo Link *" [formGroup]="registration" controlName="urlPhoto"></dio-input-text>          
+        <dio-input-date title="Release Date *" [formGroup]="registration" controlName="dtRelease"></dio-input-date>       
+        <dio-input-textarea title="Description" [formGroup]="registration" controlName="description"></dio-input-textarea>        
+        <dio-input-number 
+          title="IMDb Rate" 
+          min="0"
+          max="10"
+          step="0.5"
+          [formGroup]="registration" 
+          controlName="imbdRate"
+        ></dio-input-number>
+        <dio-input-text title="IMDb Link *" [formGroup]="registration" controlName="urlImdb"></dio-input-text>    
+        <dio-input-select title="Genre *" [formGroup]="registration" controlName="genre"></dio-input-select>
         
-        <dio-input-textarea title="Description" [formGroup]="registration" controlName="description"></dio-input-textarea>
-
-        <mat-form-field class="full-width">
-          <input matInput
-                  type="number"
-                  min="0"
-                  max="10"
-                  step="0.5"
-                  placeholder="IMDb Rate" 
-                  name="imbdRate" 
-                  formControlName="imbdRate"
-          >
-          <mat-error *ngIf="validation.checkAllErrors(f.imbdRate, 'required')">This field is required</mat-error>
-          <mat-error *ngIf="validation.checkAllErrors(f.imbdRate, 'min')">Min rate is 0</mat-error>
-          <mat-error *ngIf="validation.checkAllErrors(f.imbdRate, 'max')">Max rate is 10</mat-error>
-        </mat-form-field>
-
-        <dio-input-text title="IMDb Link *" [formGroup]="registration" controlName="urlImdb"></dio-input-text>
-
-        <mat-form-field class="full-width">
-          <mat-select placeholder="Genre *" formControlName="genre">
-            <mat-option value="Action">Action</mat-option>
-            <mat-option value="Adventure">Adventure</mat-option>
-            <mat-option value="Sci-Fi">Sci-Fi</mat-option>
-            <mat-option value="Romance">Romance</mat-option>
-            <mat-option value="Horro">Horror</mat-option>            
-          </mat-select>
-          <mat-error *ngIf="validation.checkAllErrors(f.genre, 'required')">This field is required</mat-error>         
-        </mat-form-field>
-
       </mat-card-content>
       <mat-card-actions>
         <button type="submit" color="accent" mat-raised-button>Save</button>

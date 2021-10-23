@@ -26,4 +26,45 @@ Commands
     1) npm install -g json-server
     2) json-server --watch db.json
 
+### NOTES
+TO CREATE THE MODULE TO THE COMPONENTS
+	-shared/components/fields 
+
+TO CREATE COMPONENTS TO FIELDS
+	- shared/components/fields
+		input-text
+		input-number
+		input-date
+		input-textarea
+		input-select
+
+@Input() titulo: string
+@Input() formGroup
+@Input() controlName: string
+
+get formControl(): AbstractControl {
+
+}
+	
+not use the ngOnInit
+
+import on components
+	MaterialModule,
+	ReactiveFormsModule,
+	FormsModule
+
+import on constructor
+	ValidateFieldsService
+
+import fieldsModules on moviesModule 
+
+OBS: check tslint.json to see the selector directive
+     Try to let the message in a variable.
+
+
+TODO: 
+	-Make the other components (number,date, select)
+	-Try to let the message in a variable.
+	
+	
    
