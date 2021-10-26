@@ -10,7 +10,7 @@
             [formControlName] = "controlName"
     >
     <mat-error *ngIf="validation.checkAllErrors(formControl, 'required')">This field is required</mat-error>
-    <mat-error *ngIf="validation.checkAllErrors(formControl, 'min')">Min rate is 0</mat-error>
-    <mat-error *ngIf="validation.checkAllErrors(formControl, 'max')">Max rate is 10</mat-error>
+    <mat-error *ngIf="validation.checkAllErrors(formControl, 'min')">Min rate is {{validation.lengthValidate(formControl, 'min')}}</mat-error>
+    <mat-error *ngIf="validation.checkAllErrors(formControl, 'max')">Max rate is {{validation.lengthValidate(formControl, 'max')}}</mat-error>
   </mat-form-field>
 </div>

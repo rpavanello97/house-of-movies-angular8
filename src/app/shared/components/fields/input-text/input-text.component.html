@@ -7,8 +7,8 @@
       [formControlName]="controlName"
     >
     <mat-error *ngIf="validation.checkAllErrors(formControl, 'required')">This field is required</mat-error>
-    <mat-error *ngIf="validation.checkAllErrors(formControl, 'minlength')">At least 2 characters</mat-error>
-    <mat-error *ngIf="validation.checkAllErrors(formControl, 'maxlength')">Must have 256 characters</mat-error>
+    <mat-error *ngIf="validation.checkAllErrors(formControl, 'minlength')">At least {{validation.lengthValidate(formControl, 'minlength')}} characters</mat-error>
+    <mat-error *ngIf="validation.checkAllErrors(formControl, 'maxlength')">Must have {{validation.lengthValidate(formControl, 'maxlength')}} characters</mat-error>
   </mat-form-field>
 </div>
 
