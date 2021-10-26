@@ -11,6 +11,7 @@ import { ValidateErrorsService } from 'src/app/shared/components/fields/validate
 export class CadastroFilmesComponent implements OnInit {
 
   registration: FormGroup;
+  gender: Array<string>;
 
   constructor(private fb: FormBuilder, 
               public validation: ValidateErrorsService
@@ -31,7 +32,15 @@ export class CadastroFilmesComponent implements OnInit {
       urlImdb: ['', [Validators.required, Validators.minLength(10)]],
       genre: ['', [Validators.required]],
     });
-  }
+    
+    this.gender = [
+      "Action",
+      "Adventure",
+      "Sci-Fi",
+      "Romance",
+      "Horror"
+    ];
+  } 
 
   save(): void {
     this.registration.markAllAsTouched();

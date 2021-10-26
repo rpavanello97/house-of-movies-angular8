@@ -4,11 +4,7 @@
       [placeholder]="title" 
       [formControlName]="controlName"
     >
-      <mat-option value="Action">Action</mat-option>
-      <mat-option value="Adventure">Adventure</mat-option>
-      <mat-option value="Sci-Fi">Sci-Fi</mat-option>
-      <mat-option value="Romance">Romance</mat-option>
-      <mat-option value="Horror">Horror</mat-option>            
+      <mat-option *ngFor="let option of options" value="option">{{option}}</mat-option>               
     </mat-select>
     <mat-error *ngIf="validation.checkAllErrors(formControl, 'required')">This field is required</mat-error>         
   </mat-form-field>
