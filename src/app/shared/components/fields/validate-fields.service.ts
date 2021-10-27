@@ -21,8 +21,7 @@ export class ValidateErrorsService {
     }
 
     lengthValidate(control: AbstractControl, errorName:string): number {       
-        var error = control.errors[errorName];
-        debugger
+        var error = control.errors[errorName];        
         return error.requiredLength || error.min || error.max || 0
     }
 }

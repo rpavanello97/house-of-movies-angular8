@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { MoviesService } from 'src/app/core/movies.service';
 import { ValidateErrorsService } from 'src/app/shared/components/fields/validate-fields.service';
+import { Movie } from 'src/app/shared/models/movie';
 
 @Component({
   selector: 'dio-cadastro-filmes',
@@ -14,7 +16,8 @@ export class CadastroFilmesComponent implements OnInit {
   gender: Array<string>;
 
   constructor(private fb: FormBuilder, 
-              public validation: ValidateErrorsService
+              public validation: ValidateErrorsService,
+              private movieService: MoviesService
               ) { }
 
   get f() {
@@ -42,17 +45,29 @@ export class CadastroFilmesComponent implements OnInit {
     ];
   } 
 
-  save(): void {
+  submit(): void {
     this.registration.markAllAsTouched();
 
     if (this.registration.invalid) {
       return
     }
-    alert('Sucesso \n\n' + JSON.stringify(this.registration.value, null, 4));
+    
+    const movie = this.registration.getRawValue() as Movie;
+    this.save(movie);
+    // alert('Sucesso \n\n' + JSON.stringify(this.registration.value, null, 4));
   }
 
   restartForm(): void {
     this.registration.reset();
+  }
+
+  private save(movie: Movie): void {
+    this.movieService.save(movie).subscribe((movie: Movie) => {
+      alert('Success \n' +"MovieId: "+movie.id);      
+      this.registration.reset();
+    }), (err: Error) => {
+      console.error('Observer got an error: ' + err)  
+    }
   }
 
 }
