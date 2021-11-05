@@ -4,6 +4,7 @@ import { MatDialog } from '@angular/material';
 import { MoviesService } from 'src/app/core/movies.service';
 import { AlertComponent } from 'src/app/shared/components/alert/alert.component';
 import { ValidateErrorsService } from 'src/app/shared/components/fields/validate-fields.service';
+import { Alert } from 'src/app/shared/models/alert';
 import { Movie } from 'src/app/shared/models/movie';
 
 @Component({
@@ -18,10 +19,10 @@ export class CadastroFilmesComponent implements OnInit {
   gender: Array<string>;
 
   constructor(private fb: FormBuilder,
-              private dialog: MatDialog,
-              public validation: ValidateErrorsService,
-              private movieService: MoviesService
-              ) { }
+    private dialog: MatDialog,
+    public validation: ValidateErrorsService,
+    private movieService: MoviesService
+  ) { }
 
   get f() {
     return this.registration.controls;
@@ -38,7 +39,7 @@ export class CadastroFilmesComponent implements OnInit {
       urlImdb: ['', [Validators.required, Validators.minLength(10)]],
       genre: ['', [Validators.required]],
     });
-    
+
     this.gender = [
       "Action",
       "Adventure",
@@ -46,7 +47,7 @@ export class CadastroFilmesComponent implements OnInit {
       "Romance",
       "Horror"
     ];
-  } 
+  }
 
   submit(): void {
     this.registration.markAllAsTouched();
@@ -54,7 +55,7 @@ export class CadastroFilmesComponent implements OnInit {
     if (this.registration.invalid) {
       return
     }
-    
+
     const movie = this.registration.getRawValue() as Movie;
     this.save(movie);
     // alert('Sucesso \n\n' + JSON.stringify(this.registration.value, null, 4));
@@ -66,11 +67,22 @@ export class CadastroFilmesComponent implements OnInit {
 
   private save(movie: Movie): void {
     this.movieService.save(movie).subscribe((movie: Movie) => {
-      const dialogRef = this.dialog.open(AlertComponent);      
+      const config = {
+        data: {
+          title: "SUCCESS",
+          description: "Ho yeah, your data has been saved successfully!",
+          btnSuccess: "Go to the list",
+          btnCancel: "Keep registering",
+          colorBtnCancel: "primary",
+          hasCloseBtn: true
+        } as Alert        
+      } 
+
+      const dialogRef = this.dialog.open(AlertComponent,config);
+      
       this.registration.reset();
     }), (err: Error) => {
-      console.error('Observer got an error: ' + err)  
+      console.error('Observer got an error: ' + err)
     }
   }
-
 }
