@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { MatDialog } from '@angular/material';
 import { MoviesService } from 'src/app/core/movies.service';
+import { AlertComponent } from 'src/app/shared/components/alert/alert.component';
 import { ValidateErrorsService } from 'src/app/shared/components/fields/validate-fields.service';
 import { Movie } from 'src/app/shared/models/movie';
 
@@ -15,7 +17,8 @@ export class CadastroFilmesComponent implements OnInit {
   registration: FormGroup;
   gender: Array<string>;
 
-  constructor(private fb: FormBuilder, 
+  constructor(private fb: FormBuilder,
+              private dialog: MatDialog,
               public validation: ValidateErrorsService,
               private movieService: MoviesService
               ) { }
@@ -63,7 +66,7 @@ export class CadastroFilmesComponent implements OnInit {
 
   private save(movie: Movie): void {
     this.movieService.save(movie).subscribe((movie: Movie) => {
-      alert('Success \n' +"MovieId: "+movie.id);      
+      const dialogRef = this.dialog.open(AlertComponent);      
       this.registration.reset();
     }), (err: Error) => {
       console.error('Observer got an error: ' + err)  
