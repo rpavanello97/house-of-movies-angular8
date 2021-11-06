@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatDialog } from '@angular/material';
+import { Router } from '@angular/router';
 import { MoviesService } from 'src/app/core/movies.service';
 import { AlertComponent } from 'src/app/shared/components/alert/alert.component';
 import { ValidateErrorsService } from 'src/app/shared/components/fields/validate-fields.service';
@@ -21,7 +22,8 @@ export class CadastroFilmesComponent implements OnInit {
   constructor(private fb: FormBuilder,
     private dialog: MatDialog,
     public validation: ValidateErrorsService,
-    private movieService: MoviesService
+    public router: Router,
+    public movieService: MoviesService
   ) { }
 
   get f() {
@@ -79,10 +81,26 @@ export class CadastroFilmesComponent implements OnInit {
       } 
 
       const dialogRef = this.dialog.open(AlertComponent,config);
+
+      dialogRef.afterClosed().subscribe((option: boolean) => {
+        if (option) {
+          this.router.navigateByUrl('filmes'); 
+        } else {
+          this.restartForm();
+        }
+      });      
+    }, (err: Error) => {
+      const config = {
+        data: {
+          title: 'Error to register',
+          description: 'Oh no!!! Your data has not been saved, please contact yout support.',
+          btnSuccess: 'Close',   
+          colorBtnSuccess: 'warn'  
+        } as Alert        
+      }
+
+      this.dialog.open(AlertComponent,config);
       
-      this.registration.reset();
-    }), (err: Error) => {
-      console.error('Observer got an error: ' + err)
-    }
+    });
   }
 }

@@ -3,6 +3,6 @@
   <p>{{alert.description}}</p>
 </div>
 <div mat-dialog-actions>
-  <button mat-raised-button [color]="alert.colorBtn" cdkFocusInitial [mat-dialog-close]="true">{{alert.btnSuccess}}</button>
-  <button mat-raised-button color="warn" [mat-dialog-close]="false" *ngIf="alert.hasCloseBtn">{{alert.btnCancel}}</button>
+  <button mat-raised-button [color]="alert.colorBtnSuccess" cdkFocusInitial [mat-dialog-close]="true">{{alert.btnSuccess}}</button>
+  <button mat-raised-button [color]="colorBtnCancel" [mat-dialog-close]="false" *ngIf="alert.hasCloseBtn">{{alert.btnCancel}}</button>
 </div>
