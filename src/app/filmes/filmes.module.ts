@@ -1,11 +1,13 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
+import { InfiniteScrollModule } from 'ngx-infinite-scroll';
 
 import { CadastroFilmesComponent } from './cadastro-filmes/cadastro-filmes.component';
 import { MaterialModule } from '../shared/material/material.module';
 import { ListagemFilmesComponent } from './listagem-filmes/listagem-filmes.component';
 import { FieldsModule } from '../shared/components/fields/fields.module';
+
 
 @NgModule({
   imports: [
@@ -13,8 +15,12 @@ import { FieldsModule } from '../shared/components/fields/fields.module';
     MaterialModule,
     ReactiveFormsModule,
     FormsModule,
-    FieldsModule
+    FieldsModule,
+    InfiniteScrollModule
   ],
-  declarations: [CadastroFilmesComponent, ListagemFilmesComponent]
+  declarations: [
+    CadastroFilmesComponent, 
+    ListagemFilmesComponent
+  ]
 })
 export class FilmesModule { }

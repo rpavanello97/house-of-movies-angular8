@@ -9,20 +9,32 @@ import { Movie } from 'src/app/shared/models/movie';
 })
 export class ListagemFilmesComponent implements OnInit {
 
-   movies: Movie[];
+  readonly numberOfRegisters = 8;
+  page = 0;
+  movies: Movie[] = [];
 
   constructor(
     public movieService: MoviesService
   ) { }
 
-  ngOnInit() {
-    this.movieService.get().subscribe((movies:Movie[]) => {
-      debugger
-      this.movies = movies;
+  ngOnInit(): void {
+    this.listMovies();
+  }
+
+  onScroll(): void {
+    this.listMovies();
+  }
+
+  listMovies(): void {
+    debugger
+    this.page++;
+    this.movieService.get(this.page, this.numberOfRegisters).subscribe((movies:Movie[]) => {     
+      this.movies.push(...movies)
     });
   }
 
   open() {
+  
   }
 
 }

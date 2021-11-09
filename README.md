@@ -22,6 +22,7 @@ Tecnologies and LIbraries
 
 Commands
 	
-    Working with json-server
     1) npm install -g json-server
     2) json-server --watch db.json
+    3) npm install ngx-infinite-scroll --save
+   
