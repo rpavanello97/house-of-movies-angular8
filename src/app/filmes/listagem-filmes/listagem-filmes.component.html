@@ -4,12 +4,12 @@
   <form autocomplete="off" novalidate [formGroup]="filter">
     <div class="float-left width50">
       <div class="padding10">
-        <dio-input-text title="Search here" [formGroup]="filter" controlName="titleFilter"></dio-input-text>
+        <dio-input-text title="Search here" [formGroup]="filter" controlName="fullTextSearch"></dio-input-text>
       </div>
     </div>
     <div class="float-left width50">
       <div class="padding10">
-        <dio-input-select title="Genre" [options]="genreFilter" [formGroup]="filter" controlName="genreFilter"></dio-input-select>
+        <dio-input-select title="Genre" [options]="genreOptions" [formGroup]="filter" controlName="genre"></dio-input-select>
       </div>      
     </div>
   </form>

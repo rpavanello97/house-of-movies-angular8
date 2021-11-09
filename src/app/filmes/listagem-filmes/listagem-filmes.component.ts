@@ -15,7 +15,10 @@ export class ListagemFilmesComponent implements OnInit {
   page = 0;
   movies: Movie[] = [];
   filter: FormGroup;
-  genreFilter: Array<string>;
+  genreOptions: Array<string>;
+
+  genre: string;
+  fullTextSearch: string;
 
   constructor(
     public movieService: MoviesService,
@@ -24,16 +27,28 @@ export class ListagemFilmesComponent implements OnInit {
 
   ngOnInit(): void {
     this.filter = this.fb.group({
-      titleFilter:[],
-      genreFilter:[]
+      fullTextSearch:[],
+      genre:[]
     });
 
-    this.genreFilter = [
+    this.filter.get('fullTextSearch').valueChanges.subscribe((val:string) => {
+      this.fullTextSearch = val;
+      this.resetList()
+    });
+
+    this.filter.get('genre').valueChanges.subscribe((val:string) => {
+      this.genre = val;
+      this.resetList()
+    });
+
+    this.genreOptions = [
+      "All",
       "Action",
       "Adventure",
       "Sci-Fi",
       "Romance",
-      "Horror"
+      "Horror",
+      "Drama"
     ];
 
     this.listMovies();
@@ -45,11 +60,16 @@ export class ListagemFilmesComponent implements OnInit {
   }
 
   listMovies(): void {
-    debugger
     this.page++;
-    this.movieService.get(this.page, this.numberOfRegisters).subscribe((movies:Movie[]) => {     
+    this.movieService.get(this.page, this.numberOfRegisters, this.fullTextSearch, this.genre).subscribe((movies:Movie[]) => {     
       this.movies.push(...movies)
     });
+  }
+
+  resetList() {
+    this.page = 0;
+    this.movies = [];
+    this.listMovies();
   }
 
   open() {

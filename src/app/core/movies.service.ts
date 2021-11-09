@@ -16,10 +16,18 @@ export class MoviesService {
     return this.http.post<Movie>(url, movie)
   }
 
-  get(page: number, numberOfRegisters: number): Observable<Movie[]> {
+  get(page: number, numberOfRegisters: number, fullTextSearch:string, genre:string): Observable<Movie[]> {
     let httpParams = new HttpParams();
     httpParams = httpParams.set('_page', page.toString());
-    httpParams = httpParams.set('_limit', numberOfRegisters.toString());   
+    httpParams = httpParams.set('_limit', numberOfRegisters.toString());
+    httpParams = httpParams.set('_sort', 'id');
+    httpParams = httpParams.set('_order', 'desc');    
+    if (fullTextSearch) {
+      httpParams = httpParams.set('q', fullTextSearch);
+    }
+    if (genre && genre != "All") {
+      httpParams = httpParams.set('gender', genre);
+    }
 
     return this.http.get<Movie[]>(url, {params: httpParams});
   }

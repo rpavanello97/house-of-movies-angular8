@@ -42,12 +42,13 @@ export class CadastroFilmesComponent implements OnInit {
       gender: ['', [Validators.required]],
     });
 
-    this.gender = [
-      "Action",
+    this.gender = [     
+      "Action",      
       "Adventure",
       "Sci-Fi",
       "Romance",
-      "Horror"
+      "Horror",
+      "Drama"
     ];
   }
 
