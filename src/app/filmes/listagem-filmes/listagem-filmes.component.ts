@@ -2,7 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 
 import { MoviesService } from 'src/app/core/movies.service';
+import { ConfigParams } from 'src/app/shared/models/config-params';
 import { Movie } from 'src/app/shared/models/movie';
+import { NameValue } from 'src/app/shared/models/name-value';
 
 @Component({
   selector: 'dio-listagem-filmes',
@@ -11,14 +13,18 @@ import { Movie } from 'src/app/shared/models/movie';
 })
 export class ListagemFilmesComponent implements OnInit {
 
-  readonly numberOfRegisters = 8;
-  page = 0;
+  params: ConfigParams = {
+    page: 0,
+    numberOfRegisters: 8,    
+    fullTextSearch: "",
+    field: {} as NameValue
+  }
+  
   movies: Movie[] = [];
   filter: FormGroup;
   genreOptions: Array<string>;
 
-  genre: string;
-  fullTextSearch: string;
+  
 
   constructor(
     public movieService: MoviesService,
@@ -32,12 +38,12 @@ export class ListagemFilmesComponent implements OnInit {
     });
 
     this.filter.get('fullTextSearch').valueChanges.subscribe((val:string) => {
-      this.fullTextSearch = val;
+      this.params.fullTextSearch = val;
       this.resetList()
     });
 
-    this.filter.get('genre').valueChanges.subscribe((val:string) => {
-      this.genre = val;
+    this.filter.get('genre').valueChanges.subscribe((val:string) => {      
+      this.params.field = { name: 'gender', value: val};
       this.resetList()
     });
 
@@ -60,14 +66,14 @@ export class ListagemFilmesComponent implements OnInit {
   }
 
   listMovies(): void {
-    this.page++;
-    this.movieService.get(this.page, this.numberOfRegisters, this.fullTextSearch, this.genre).subscribe((movies:Movie[]) => {     
+    this.params.page++;
+    this.movieService.get(this.params).subscribe((movies:Movie[]) => {     
       this.movies.push(...movies)
     });
   }
 
   resetList() {
-    this.page = 0;
+    this.params.page = 0;
     this.movies = [];
     this.listMovies();
   }
