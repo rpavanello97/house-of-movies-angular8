@@ -11,13 +11,19 @@
 }
 
 .mat-card-image {
-  width: auto;
+  width: 182px;
+  height: 268px;
   margin: auto;
   display: block;
+  padding-bottom: 10px;
 }
 
 .filter-list {
   width: calc(100% - 50px)
+}
+
+.wrap-line {
+  white-space: pre-line;
 }
 
 @media screen and (min-width: 525px) {

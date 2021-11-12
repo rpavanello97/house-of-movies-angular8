@@ -15,17 +15,17 @@
   </form>
 </mat-card>
 
-<div class="home-content" infiniteScroll (scrolled)="onScroll()">
+<div class="home-content" infiniteScroll (scrolled)="onScroll()" *ngIf="movies?.length; else noMovies">
   <mat-card class="home-card" *ngFor="let movie of movies">
     <mat-card-header>
       <div mat-card-avatar></div>
       <mat-card-title>{{movie.title}}</mat-card-title>
       <mat-card-subtitle>{{movie.gender}}</mat-card-subtitle>
     </mat-card-header>
-    <img mat-card-image [src]="movie.urlPhoto" alt="Angular Material 7">
+    <img mat-card-image [src]="movie.urlPhoto || noPhotoMovies" alt="Angular Material 7">
     <mat-card-content>
-      <p>
-        {{movie.description}}
+      <p class="wrap-line">
+        {{movie.description || 'No description informed.'}}
       </p>
     </mat-card-content>
     <mat-card-actions>
@@ -33,3 +33,7 @@
     </mat-card-actions>
   </mat-card>
 </div>
+
+<ng-template #noMovies>
+  <h1 class='full-width main-div'>No movies to show.</h1>
+</ng-template>

@@ -9,8 +9,7 @@ export class ParamsConfigService {
 
   constructor( ) { }
 
-  getConfigParams(config: ConfigParams): HttpParams {  
-    debugger  
+  getConfigParams(config: ConfigParams): HttpParams {   
     let httpParams = new HttpParams();
     if (config.page) {
       httpParams = httpParams.set('_page', config.page.toString());

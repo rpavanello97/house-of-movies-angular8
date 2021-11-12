@@ -34,7 +34,8 @@ export class CadastroFilmesComponent implements OnInit {
 
     this.registration = this.fb.group({
       title: ['', [Validators.required, Validators.minLength(2), Validators.maxLength(256)]],
-      urlPhoto: ['', [Validators.required, Validators.minLength(10)]],
+      // urlPhoto: ['', [Validators.required, Validators.minLength(10)]],
+      urlPhoto: [''],
       dtRelease: ['', [Validators.required]],
       description: [''],
       imbdRate: [0, [Validators.required, Validators.min(0), Validators.max(10)]],

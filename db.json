@@ -109,7 +109,7 @@
       "urlIMDb": "https://www.imdb.com/title/tt2527338/?ref_=vi_md_ti",
       "gender": "Adventure",
       "id": 11
-    },    
+    },
     {
       "title": "Aquaman",
       "urlPhoto": "https://m.media-amazon.com/images/M/MV5BOTk5ODg0OTU5M15BMl5BanBnXkFtZTgwMDQ3MDY3NjM@._V1_QL75_UX190_CR0,0,190,281_.jpg",
@@ -119,6 +119,26 @@
       "urlImdb": "https://www.imdb.com/title/tt1477834/?ref_=hm_tpks_tt_t_2_pd_tp1_cp",
       "gender": "Adventure",
       "id": 12
+    },
+    {
+      "title": "Stranger Things",
+      "urlPhoto": "",
+      "dtRelease": "2021-11-19T03:00:00.000Z",
+      "description": "Stranger Things is very  nice\nStranger Things I liked a lot",
+      "imbdRate": 9,
+      "urlImdb": "https://www.imdb.com/video/vi2566570777?ref_=hm_hp_i_1&listId=ls053181649",
+      "gender": "Adventure",
+      "id": 13
+    },
+    {
+      "title": "Teste",
+      "urlPhoto": "",
+      "dtRelease": "2021-11-11T03:00:00.000Z",
+      "description": "",
+      "imbdRate": 2,
+      "urlImdb": "Teste teste",
+      "gender": "Adventure",
+      "id": 14
     }
   ]
 }

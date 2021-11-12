@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
+import { debounceTime } from 'rxjs/operators';
 
 import { MoviesService } from 'src/app/core/movies.service';
 import { ConfigParams } from 'src/app/shared/models/config-params';
@@ -20,11 +21,10 @@ export class ListagemFilmesComponent implements OnInit {
     field: {} as NameValue
   }
   
+  readonly noPhotoMovies = "https://st2.depositphotos.com/4267231/6843/v/950/depositphotos_68437047-stock-illustration-no-image-available.jpg";
   movies: Movie[] = [];
   filter: FormGroup;
-  genreOptions: Array<string>;
-
-  
+  genreOptions: Array<string>;  
 
   constructor(
     public movieService: MoviesService,
@@ -37,7 +37,7 @@ export class ListagemFilmesComponent implements OnInit {
       genre:[]
     });
 
-    this.filter.get('fullTextSearch').valueChanges.subscribe((val:string) => {
+    this.filter.get('fullTextSearch').valueChanges.pipe(debounceTime(400)).subscribe((val:string) => {
       this.params.fullTextSearch = val;
       this.resetList()
     });
