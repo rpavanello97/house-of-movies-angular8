@@ -1,12 +1,12 @@
 <mat-toolbar class="app-title">Register a new movie</mat-toolbar>
 <div class="main-div">
-  <mat-card class="center width50">
+  <mat-card class="center width50" *ngIf="registration">
     <form autocomplete="off" novalidate [formGroup]="registration" (ngSubmit)="submit()" (ngReset)="restartForm()">
       <mat-card-content>
                 
         <dio-input-text title="Title *" [formGroup]="registration" controlName="title"></dio-input-text>
         <dio-input-text title="Photo Link *" [formGroup]="registration" controlName="urlPhoto"></dio-input-text>          
-        <dio-input-date title="Release Date *" [formGroup]="registration" controlName="dtRelease"></dio-input-date>       
+        <dio-input-date title="Release Date *" [formGroup]="registration" controlName="releaseDate"></dio-input-date>       
         <dio-input-textarea title="Description" [formGroup]="registration" controlName="description"></dio-input-textarea>        
         <dio-input-number 
           title="IMDb Rate" 
@@ -22,7 +22,8 @@
       </mat-card-content>
       <mat-card-actions>
         <button type="submit" color="accent" mat-raised-button>Save</button>
-        <button type="reset" color="warn" mat-raised-button>Cancel</button>
+        <button type="reset" color="warn" mat-raised-button *ngIf="!id">Cancel</button>
+        <button color="warn" mat-raised-button *ngIf="id" (click)='returnBtn()'>Return</button>
       </mat-card-actions>
     </form>
   </mat-card>

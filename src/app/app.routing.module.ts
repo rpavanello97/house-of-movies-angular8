@@ -9,9 +9,9 @@ import { VisualizarFilmesComponent } from './filmes/visualizar-filmes/visualizar
 const routes: Routes = [
 
   {
-      path: '',
-      redirectTo: 'filmes',
-      pathMatch: 'full'
+    path: '',
+    redirectTo: 'filmes',
+    pathMatch: 'full'
   },
   {
     path: 'filmes',
@@ -22,7 +22,16 @@ const routes: Routes = [
       },
       {
         path: 'cadastro',
-        component: CadastroFilmesComponent,
+        children: [
+          {
+            path: '',
+            component: CadastroFilmesComponent,
+          },
+          {
+            path: ':id',
+            component: CadastroFilmesComponent,
+          }
+        ]
       },
       {
         path: ':id',

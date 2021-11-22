@@ -52,7 +52,7 @@ export class VisualizarFilmesComponent implements OnInit {
   }
 
   edit(): void {
-    console.log("Edit")
+    this.router.navigateByUrl('filmes/cadastro/'+this.movie.id);
   }
 
 }

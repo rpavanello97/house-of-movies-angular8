@@ -1,11 +1,13 @@
-<mat-list *ngIf="movie; else noMovies">
-    <mat-list-item> Title: {{movie.title}} </mat-list-item>
-    <mat-list-item> Description: {{movie.description}} </mat-list-item>
-    <mat-list-item> Release Date: {{movie.dtRelease | date: 'dd/MM/yyyy'}} </mat-list-item>
+<mat-list calss='container' *ngIf="movie; else noMovies">
+    <mat-list-item> Title: <br>{{movie.title}}</mat-list-item>
+    <mat-list-item class="wrap-line"> Description: {{movie.description}} </mat-list-item>
+    <mat-list-item> Release Date: {{movie.releaseDate | date: 'dd/MM/yyyy'}} </mat-list-item>
     <mat-list-item> Genre: {{movie.gender}} </mat-list-item>
-    <mat-list-item> Rate: <a [href]="movie.urlIMDb" target="_blank" class="link"> {{ movie.imbdRate}}</a></mat-list-item>
+    <mat-list-item> Rate: <a [href]="movie.urlIMDb" target="_blank" class="link"> {{ movie.imbdRate}}</a>
+    </mat-list-item>
     <img mat-card-image [src]="movie.urlPhoto || noPhotoMovies" alt="Angular Material 7">
 </mat-list>
+
 <mat-card>
     <mat-card-actions>
         <button color="accent" (click)="edit()" mat-raised-button>Edit</button>

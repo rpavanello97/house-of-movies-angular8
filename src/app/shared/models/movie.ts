@@ -4,7 +4,7 @@ export interface Movie {
     urlPhoto?: string,
     releaseDate: Date,
     description?: string,
-    rate? : number,
+    imbdRate? : number,
     urlIMDb: string,
     gender: string,
 }

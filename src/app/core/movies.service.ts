@@ -22,6 +22,10 @@ export class MoviesService {
     return this.http.post<Movie>(url, movie)
   }
 
+  edit(movie: Movie): Observable<Movie> {
+    return this.http.put<Movie>(url + movie.id, movie)
+  }
+
   get(config: ConfigParams): Observable<Movie[]> {    
     const httpParams = this.paramsConfig.getConfigParams(config);    
     return this.http.get<Movie[]>(url, {params: httpParams});
