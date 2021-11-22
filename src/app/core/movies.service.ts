@@ -23,9 +23,16 @@ export class MoviesService {
   }
 
   get(config: ConfigParams): Observable<Movie[]> {    
-    const httpParams = this.paramsConfig.getConfigParams(config);
-    
+    const httpParams = this.paramsConfig.getConfigParams(config);    
     return this.http.get<Movie[]>(url, {params: httpParams});
+  }
+
+  getById(id: number): Observable<Movie> {
+    return this.http.get<Movie>(url + id);
+  }
+
+  delete(id: number): Observable<void> {
+    return this.http.delete<void>(url + id);
   }
 
 }

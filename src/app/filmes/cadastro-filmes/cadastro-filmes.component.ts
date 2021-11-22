@@ -39,7 +39,7 @@ export class CadastroFilmesComponent implements OnInit {
       dtRelease: ['', [Validators.required]],
       description: [''],
       imbdRate: [0, [Validators.required, Validators.min(0), Validators.max(10)]],
-      urlImdb: ['', [Validators.required, Validators.minLength(10)]],
+      urlIMDb: ['', [Validators.required, Validators.minLength(10)]],
       gender: ['', [Validators.required]],
     });
 
