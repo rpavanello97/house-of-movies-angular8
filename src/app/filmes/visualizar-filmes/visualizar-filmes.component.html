@@ -1,19 +1,32 @@
-<mat-list calss='container' *ngIf="movie; else noMovies">
-    <mat-list-item> Title: <br>{{movie.title}}</mat-list-item>
-    <mat-list-item class="wrap-line"> Description: {{movie.description}} </mat-list-item>
-    <mat-list-item> Release Date: {{movie.releaseDate | date: 'dd/MM/yyyy'}} </mat-list-item>
-    <mat-list-item> Genre: {{movie.gender}} </mat-list-item>
-    <mat-list-item> Rate: <a [href]="movie.urlIMDb" target="_blank" class="link"> {{ movie.imbdRate}}</a>
-    </mat-list-item>
-    <img mat-card-image [src]="movie.urlPhoto || noPhotoMovies" alt="Angular Material 7">
-</mat-list>
-
-<mat-card>
-    <mat-card-actions>
-        <button color="accent" (click)="edit()" mat-raised-button>Edit</button>
-        <button color="warn" (click)="delete()" mat-raised-button>Delete</button>
-    </mat-card-actions>
-</mat-card>
+<div class="container">
+    <div class="wrapper">
+        <mat-list>
+            <mat-list-item class="title">Movie information</mat-list-item>
+        </mat-list>
+        <div class="info-photo">
+            <div class="informations">
+                <mat-list *ngIf="movie; else noMovies">
+                    <mat-list-item> Title: {{movie.title}} </mat-list-item>
+                    <mat-list-item class="wrap-line"> Description: {{movie.description}} </mat-list-item>
+                    <mat-list-item> Release Date: {{movie.releaseDate | date: 'dd/MM/yyyy'}} </mat-list-item>
+                    <mat-list-item> Genre: {{movie.gender}} </mat-list-item>
+                    <mat-list-item> Rate: <a [href]="movie.urlIMDb" target="_blank" class="link">
+                            {{movie.imbdRate}}</a>
+                    </mat-list-item>
+                </mat-list>
+            </div>
+            <div class="photo">
+                <img mat-card-image [src]="movie.urlPhoto || noPhotoMovies" alt="Angular Material 7">
+            </div>
+        </div>
+        <mat-card>
+            <mat-card-actions class="button">
+                <button color="accent" (click)="edit()" mat-raised-button>Edit</button>
+                <button color="warn" (click)="delete()" mat-raised-button>Delete</button>
+            </mat-card-actions>
+        </mat-card>
+    </div>
+</div>
 
 <ng-template #noMovies>
     <h1 class='full-width main-div'>No movies to show.</h1>
