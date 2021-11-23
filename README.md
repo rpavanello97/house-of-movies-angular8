@@ -1,6 +1,6 @@
 "House of Movies " it's an application that was implemented where it is possible to register, list, edit, and remove the movies. The application was developed during the course "Técnicas Avançadas em Angular 8" from Digital Innovation One.
 
-## Instalação
+## Installation
 
 1. Clone the repository `git clone git@github.com:RenanRB/curso-angular.git`
 2. Install all dependencies with `npm install` command
@@ -8,7 +8,7 @@
 4. OBS: other command used -> `npm install ngx-infinite-scroll --save`
 
 
-## Simulando o Back-end
+## Back-end simulation
 
 Execute `npm install -g json-server` to install JSON server globally. After the installation, open the project folder and run `json-server --watch db.json`. Then, it is possible to access URL `http://localhost:3000/` and run all HTTP requisition.
 
