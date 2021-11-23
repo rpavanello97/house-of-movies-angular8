@@ -1,28 +1,27 @@
+"House of Movies " it's an application that was implemented where it is possible to register, list, edit, and remove the movies. The application was developed during the course "Técnicas Avançadas em Angular 8" from Digital Innovation One.
+
 ## Instalação
 
-1. clone o repositório `git clone git@github.com:RenanRB/curso-angular.git`
-2. Entre no projeto e instale as dependencias `npm install`
-3. Caso você queira alguma aula específica lembre que voce pode pegar direto das nossas release fazendo download do zip ou clonando a partir do commit hash, URL: https://github.com/RenanRB/curso-angular/tags
+1. Clone the repository `git clone git@github.com:RenanRB/curso-angular.git`
+2. Install all dependencies with `npm install` command
+3. run `ng serve` to execute the application. Access a url `http://localhost:4200/`.
+4. OBS: other command used -> `npm install ngx-infinite-scroll --save`
 
-## Ambiente Local
-
-Execute `ng serve` para que o projeto suba localmente. Acesse a url `http://localhost:4200/`. O projeto já está com reload automático conforme as alterações que você realizar no código
 
 ## Simulando o Back-end
 
-Execute `npm install -g json-server` para instalar globalmente o servidor json. Após a instalação entre na pasta do projeto e execute `json-server --watch db.json`, com isso um servidor será inicializado na url `http://localhost:3000/`, após a inicialização sera possível realizar requisições http.
+Execute `npm install -g json-server` to install JSON server globally. After the installation, open the project folder and run `json-server --watch db.json`. Then, it is possible to access URL `http://localhost:3000/` and run all HTTP requisition.
 
+## Technologies  and Libraries used during the development
 
-Tecnicas avançadas em Angular 8
-
-Tecnologies and LIbraries
-    1) Angular Material
-    2) Json-Server
-    3) RxJS
-
-Commands
-	
-    1) npm install -g json-server
-    2) json-server --watch db.json
-    3) npm install ngx-infinite-scroll --save
+    - <img src="https://img.shields.io/badge/Angular-DD0031?style=for-the-badge&logo=angular&logoColor=white" />    
+    - <img src="https://img.shields.io/badge/TypeScript-007ACC?style=for-the-badge&logo=typescript&logoColor=white" />     
+    - <img src="https://img.shields.io/badge/HTML5-E34F26?style=for-the-badge&logo=html5&logoColor=white" />
+    - <img src="https://img.shields.io/badge/Sass-CC6699?style=for-the-badge&logo=sass&logoColor=white" />
+    - Angular Material
+    - JSON Server
+    - RxJS
+    - NGX-Infinite-Scroll
    
+
+© R B  Pavanello.

@@ -26,12 +26,9 @@
   align-items: center;
   padding: 1rem;
   border: 2px solid rgb(103, 153, 156);
-  border-radius: 10px;  
+  border-radius: 10px; 
+  background-color: #424242 
 } 
-
-.informations {
-  
-}
 
 .photo {
   padding-top: 1.3rem;
@@ -42,21 +39,12 @@
   height: 300px;
   margin: auto;
   display: block;
-  // padding-bottom: 10px;
 }
-
-mat-card {
-  width: 80%;
-  display: flex;
-  justify-content: center;
-  margin-top: 5px;
-} 
 
 .button {  
   margin: 0%;
   padding: 0%;
-  border: 0%; 
-  width: 78%;
+  border: 0%;  
 }
 
 .link {
@@ -67,4 +55,14 @@ mat-card {
 .wrap-line {
   white-space: pre-line;
 }
+
+mat-card {
+  width: 80%;
+  display: flex;
+  justify-content: flex-start;
+  margin-top: 5px;
+
+  border: 2px solid rgb(103, 153, 156);
+  border-radius: 10px; 
+} 
 
